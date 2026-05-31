@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS persons (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100) NOT NULL UNIQUE,
+    identification VARCHAR(10) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS person_bootcamp (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id_person BIGINT NOT NULL,
+    id_bootcamp BIGINT NOT NULL,
+    CONSTRAINT fk_person FOREIGN KEY (id_person) REFERENCES persons(id)
+);
