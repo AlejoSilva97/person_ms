@@ -11,10 +11,20 @@ public class WebClientConfig {
     @Value("${adapters.bootcamp-ms.url}")
     private String bootcampServiceUrl;
 
+    @Value("${adapters.report-ms.url}")
+    private String reportServiceUrl;
+
     @Bean
     public WebClient bootcampWebClient(WebClient.Builder builder) {
         return builder
                 .baseUrl(bootcampServiceUrl)
+                .build();
+    }
+
+    @Bean
+    public WebClient reportWebClient(WebClient.Builder builder) {
+        return builder
+                .baseUrl(reportServiceUrl)
                 .build();
     }
 }
