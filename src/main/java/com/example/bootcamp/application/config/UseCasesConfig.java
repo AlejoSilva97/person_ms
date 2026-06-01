@@ -2,6 +2,7 @@ package com.example.bootcamp.application.config;
 
 import com.example.bootcamp.domain.spi.PersonPersistencePort;
 import com.example.bootcamp.domain.spi.BootcampExternalService;
+import com.example.bootcamp.domain.spi.ReportExternalService;
 import com.example.bootcamp.domain.usecase.PersonUseCase;
 import com.example.bootcamp.domain.api.PersonServicePort;
 import com.example.bootcamp.infrastructure.adapters.persistenceadapter.mapper.PersonEntityMapper;
@@ -19,8 +20,9 @@ public class UseCasesConfig {
         private final PersonEntityMapper personEntityMapper;
 
         @Bean
-        public PersonServicePort bootcampServicePort(PersonPersistencePort personPersistencePort,
-                                                     BootcampExternalService bootcampExternalService) {
-            return new PersonUseCase(personPersistencePort, bootcampExternalService);
+        public PersonServicePort personServicePort(PersonPersistencePort personPersistencePort,
+                                                   BootcampExternalService bootcampExternalService,
+                                                   ReportExternalService reportExternalService) {
+            return new PersonUseCase(personPersistencePort, bootcampExternalService, reportExternalService);
         }
 }
